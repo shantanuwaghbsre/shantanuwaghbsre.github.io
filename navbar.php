@@ -1,5 +1,5 @@
 
-<link rel="stylesheet" href="css/bootstrap.min.css" />
+<?php include 'boot_link.php' ?>
 <div class="container-fluid">
 <!-- Navbar start's here -->
 <nav class="navbar navbar-expand-lg bg-body-tertiary fs-3">
