@@ -20,17 +20,19 @@
     <?php }else{ ?>
         <title>OnlineShop</title>
     <?php } ?>
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700,900|Montserrat:400,500,700,900" rel="stylesheet">
     <!-- Font Awesome Icon -->
     <link rel="stylesheet" href="css/font-awesome.css">
     <!-- Custom stlylesheet -->
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="myStyle.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="css/owl.carousel.min.css"/>
     <link rel="stylesheet" href="css/owl.theme.default.min.css"/>
+
 </head>
 <body>
 <!-- HEADER -->
@@ -43,16 +45,18 @@
             <div class="col-md-2">
                 <?php
                     if(!empty($header[0]['site_logo'])){ ?>
-                        <a href="<?php echo $hostname; ?>" class="logo-img"><!-- <img src="images/<?php echo $header[0]['site_logo']; ?>" alt=""> --><img src="images/h.png" style="width:100px;"></a>
+                        <a href="<?php echo $hostname; ?>" class="logo-img"><!-- <img src="images/<?php echo $header[0]['site_logo']; ?>" alt=""><img src="images/h.png" class="img-fluid p-5" style="width:150px;"></a> -->
+                        <a href="#">
+                        <img src="images/h.png" class="img-fluid p-5" style="width:150px;"></a>
                     <?php }else{ ?>
                         <a href="<?php echo $hostname; ?>" class="logo"><?php echo $header[0]['site_name']; ?></a>
                     <?php } ?>
             </div>
             <!-- /LOGO -->
-            <div class="col-md-7">
+            <div class="col-md-7 p-5 mt-3">
                 <form action="search.php" method="GET">
                 <div class="input-group search">
-                    <input type="text" class="form-control" name="search" placeholder="Search for...">
+                    <input type="text" class="form-control" name="search" placeholder="Search for..." required>
                     <span class="input-group-btn">
                         <input class="btn btn-default"  type="submit" value="Search" />
                     </span>
@@ -82,13 +86,13 @@
                                     <li><a href="user_orders.php" class="" >My Orders</a></li>
                                     <li><a href="javascript:void()" class="user_logout" >Logout</a></li>
                             <?php  }else{ ?>
-                                    <li><a data-toggle="modal" data-target="#userLogin_form" href="#">login</a></li>
+                                    <li><a data-toggle="modal" data-target="#userLogin_form" >login</a></li>
                                     <li><a href="register.php">Register</a></li>
                               <?php  } ?>
 
                         </ul>
                     </li>
-                    <li>
+                    <li class="p-2 mt-5">
                         <a href="wishlist.php"><i class="fa fa-heart"></i>
                             <?php if(isset($_COOKIE['wishlist_count'])){
                                     echo '<span>'.$_COOKIE["wishlist_count"].'</span>';
@@ -111,7 +115,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <div class="modal-body">
+                        <div class="modal-body"> 
                             <!-- Form -->
                             <form  id="loginUser" method ="POST">
                                 <div class="customer_login"> 
@@ -137,6 +141,7 @@
         </div>
     </div>
 </div>
+<?php include 'navbar.php' ?>
 <div id="header-menu">
     <div class="container-fluid">
         <div class="row">

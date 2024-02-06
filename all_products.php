@@ -13,7 +13,7 @@
                     $result = $db->getResult();
                     if(count($result) > 0){
                         foreach($result as $row){ ?>
-                            <div class="col-md-3 col-sm-6">
+                            <div class="col-md-4 col-sm-6">
                                 <div class="product-grid">
                                     <div class="product-image latest">
                                         <a class="image" href="single_product.php?pid=<?php echo $row['product_id']; ?>">
