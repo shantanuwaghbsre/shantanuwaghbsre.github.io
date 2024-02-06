@@ -30,7 +30,7 @@ if(count($single_product) > 0){
                 <div class="col-md-2"></div>
                 <div class="col-md-2">
                     <div class="product-image">
-                        <img id="product-img" src="product-images/<?php echo $row['featured_image'] ?>" alt=""/>
+                        <img id="product-img" src="product-images/<?php echo $row['featured_image'] ?>" alt="" style="width:300px; height:350px; padding-right:30px;" />
                     </div>
                 </div>
                 <div class="col-md-1"></div>
@@ -43,6 +43,7 @@ if(count($single_product) > 0){
                         <a class="add-to-wishlist" data-id="<?php echo $row['product_id']; ?>" href="">Add to Wislist</a>
                     </div>
                 </div>
+                <?php include 'review.php' ?>
                 <div class="col-md-2"></div>
     <?php   } ?>
         </div>
