@@ -1,4 +1,4 @@
-<div id ="footer" class="p-5">
+<div id ="footer">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
@@ -49,7 +49,7 @@
                 </ul>
             </div>
             <div class="col-md-12">
-                <span><?php echo $footer[0]['footer_text'] ?> <br><a href="" target="_blank">Bapa Sitaram Ayurveda and Healthcare Pvt. Ltd.</a></span>
+                <span><?php echo $footer[0]['footer_text'] ?> | Created by <a href="" target="_blank"></a></span>
             </div>
         </div>
     </div>
@@ -61,8 +61,6 @@
 <script src="js/okzoom.min.js" type="text/javascript"></script>
 <!--owl carousel plugin-->
 <script type="text/javascript" src="js/owl.carousel.js"></script>
-<!-- Latest compiled JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
     $(document).ready(function(){
