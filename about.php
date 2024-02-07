@@ -1,31 +1,62 @@
 <?php include 'config.php';  //include config
 // set dynamic title
 $db = new Database();
-$db->select('options','site_title',null,null,null,null);
-$result = $db->getResult();
 
-if(!empty($result)){ 
-    $title = $result[0]['site_title']; 
-}else{ 
-    $title = "Shopping Project";
-}
-// include header 
-include 'header.php'; ?>
+?>
 
-<div class="container p-5">
-	<div class="col-md-6">
-		<img src="images/about-img.png" class="img-fluid">
-	</div>
-	<div class="col-md-6" id="about_intro">
-		<h3>TECHNOLOGY AT RISHIGYAN</h3>
-		<h1>INNOVATION</h1>
-		<p id="p1">Rishigyan technology drives path-breaking, customer-focused innovation that makes high quality products accessible to Indian shoppers, besides making the online shopping experience convenient, intuitive and seamless.</p>
-		<p id="p2">The future of e-commerce is sustainable, equitable and inclusive. As we continue to drive changes across key areas of our operations, our commitment is embedded in our vision to create a positive impact, for the planet and communities.</p>
-		<br>
-		<h1>RISHIGYAN CULTURE</h1>
-        <p id="p3">Rishigyan culture is steeped in fostering trust, inclusion, support, recognition and genuine care that enables Flipsters to create, innovate, and bring their best selves to work</p>
-		<button id="btn">Explore More</button>
-	</div>
+<?php include 'header.php'; ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>About Us</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+  .w3-content {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+  }
+  .w3-row-padding {
+    margin: 0 -16px;
+  }
+  .w3-half {
+    width: 50%;
+    padding: 0 16px;
+  }
+</style>
+</head>
+<body>
+
+<div class="w3-content">
+  <h2 class="w3-center">About Us</h2>
+  
+  <div class="w3-row-padding w3-margin-top">
+    <div class="w3-half">
+      <img src="images/tech.png" alt="Team" style="width:100%">
+    </div>
+    <div class="w3-half">
+      <h3>Who We Are</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis libero eget ipsum posuere volutpat. Nullam auctor, felis a cursus placerat, ex tellus vestibulum est, a consectetur nisi tellus ac nulla. Quisque quis est dui. Nulla facilisi. Nam non turpis ut lorem imperdiet ultricies.</p>
+      <p>Suspendisse potenti. Mauris bibendum, ligula sit amet gravida commodo, dui urna suscipit nisi, ac vehicula risus mi vitae ex. Nam efficitur odio id nisi mollis, nec sodales lectus finibus. Curabitur eget pulvinar est, nec fermentum metus.</p>
+    </div>
+  </div>
+  
+  <div class="w3-row-padding w3-margin-top">
+    <div class="w3-half">
+      <h3>Our Mission</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis libero eget ipsum posuere volutpat. Nullam auctor, felis a cursus placerat, ex tellus vestibulum est, a consectetur nisi tellus ac nulla.</p>
+      <p>Quisque quis est dui. Nulla facilisi. Nam non turpis ut lorem imperdiet ultricies. Suspendisse potenti. Mauris bibendum, ligula sit amet gravida commodo, dui urna suscipit nisi, ac vehicula risus mi vitae ex.</p>
+    </div>
+    <div class="w3-half">
+      <img src="images/tree.png" alt="Mission" style="width:100%">
+    </div>
+  </div>
 </div>
+
+</body>
+</html>
+
 
 <?php include 'footer.php'; ?>

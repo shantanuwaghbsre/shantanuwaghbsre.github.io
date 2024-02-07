@@ -12,8 +12,8 @@ include 'header.php'; ?>
         <div class="col-md-offset-auto col-md-6" style="background-color:#f9f9f9; width:100%;">
            
             <!-- Form -->
-            <form id="register_sign_up" class="signup_for p-5" method ="POST" autocomplete="off">
-                <h2>Create new Account</h2>
+            <form id="register_sign_up" class="signup_form" method ="POST" autocomplete="off">
+                <h2>register here</h2>
                 <div class="form-group">
                     <label>First Name</label>
                     <input type="text" name="f_name" class="form-control first_name" placeholder="First Name" requried />
