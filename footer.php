@@ -12,8 +12,8 @@
                 <p>Ayurvedic Lifestyle Wisdom: Embrace the art of balanced living with insights from Ayurvedic lifestyle practices. From daily routines (Dinacharya) to seasonal adjustments (Ritucharya), unlock the secrets to a harmonious life in tune with nature's rhythms.</p>
             </div>
             <div class="col-md-3">
-                <h3>Categories</h3>
-                <ul class="menu-list">
+                <h3>Group of Companies</h3>
+                <!-- <ul class="menu-list">
                     <?php
                     $db = new Database();
                     $db->select('sub_categories','*',null,'cat_products > 0 AND show_in_footer ="1"',null,null);
@@ -23,6 +23,11 @@
                             <li><a href="category.php?cat=<?php echo $res['sub_cat_id']; ?>"><?php echo $res['sub_cat_title']; ?></a></li>
                         <?php    }
                     } ?>
+                </ul> -->
+                <ul>
+                    <li>Bapa Sitaram Renewable Energy</li>
+                    <li>Bapa Sitaram Inovation & Technology</li>
+                    <li>Bapa Sitaram Credit Society</li>
                 </ul>
             </div>
             <div class="col-md-3">
@@ -49,7 +54,7 @@
                 </ul>
             </div>
             <div class="col-md-12">
-                <span><?php echo $footer[0]['footer_text'] ?> | Created by <a href="" target="_blank"></a></span>
+                <span><a href="">&copy; Copyright by | Bapa Sitaram Healthcare and Ayurveda Pvt. Ltd.</a></span>
             </div>
         </div>
     </div>

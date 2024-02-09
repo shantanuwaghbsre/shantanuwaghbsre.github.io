@@ -4,7 +4,7 @@ session_start();
 if(isset($_SESSION['user_id']) && $_SESSION['user_role'] == 'user') {
 include 'header.php'; ?>
 <div id="user_profile-content">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-offset-3 col-md-6">
                 <?php
@@ -15,7 +15,7 @@ include 'header.php'; ?>
                 if(count($result) > 0) { ?>
                     <!-- Form -->
                     <form id="modify-user" method="POST">
-                        <div class="signup_form">
+                        <div class="@signup_form" style="background-color:#f9f9f9; padding:30px;">
                             <h2>Modify Profile</h2>
                             <?php foreach($result as $row){ ?>
                                 <div class="form-group">
@@ -48,7 +48,7 @@ include 'header.php'; ?>
                                 <label>City</label>
                                 <input type="text" name="city" class="form-control city" placeholder="City" value="<?php echo $row['city']; ?>" requried>
                             </div>
-                            <input type="submit" name="signup" class="btn" value="Modify"/>
+                            <input type="submit" name="signup" class="btn btn-primary" value="Modify"/>
                         <?php  } ?>
                         </div>
                     </form>

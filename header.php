@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="css/font-awesome.css">
     <!-- Custom stlylesheet -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="myStyle.css">
 
     <link rel="stylesheet" href="css/owl.carousel.min.css"/>
     <link rel="stylesheet" href="css/owl.theme.default.min.css"/>
@@ -48,6 +49,16 @@
                     <?php }else{ ?>
                         <a href="<?php echo $hostname; ?>" class="logo"><?php echo $header[0]['site_name']; ?></a>
                     <?php } ?>
+            </div>
+            <div>
+                <?php
+                $currentPage = explode('/', $_SERVER['REQUEST_URI'])[count(explode('/', $_SERVER['REQUEST_URI']))-1];
+                $hideCategories = false;
+                if ($currentPage === "about.php" || $currentPage === "contact.php" || $currentPage === "register.php" || $currentPage === "user_profile.php" || $currentPage === "change_password.php" || $currentPage === "user_orders.php" || $currentPage === "cart.php" || "edit_user.php") {
+                    $hideCategories = true;
+                }
+
+                ?>
             </div>
             <!-- /LOGO -->
             <div class="col-md-7">
@@ -139,7 +150,8 @@
     </div>
 </div>
 <?php include 'navbar.php'; ?>
-<div id="header-menu">
+<?php if (!$hideCategories) { ?>
+    <div id="header-menu" >
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -158,3 +170,6 @@
         </div>
     </div>
 </div>
+<?php } ?>
+
+

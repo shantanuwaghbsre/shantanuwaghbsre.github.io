@@ -21,7 +21,7 @@ include 'header.php'; ?>
             font-family: Arial, sans-serif;
         }
         .container {
-            max-width: 800px;
+            max-width: 100%;
             margin: auto;
             padding: 20px;
         }
@@ -59,7 +59,7 @@ include 'header.php'; ?>
 </head>
 <body>
 
-<div class="w3-container w3-teal w3-center w3-padding-24">
+<div class="w3-container w3-center w3-padding-24">
     <h2>Contact Us</h2>
 </div>
 
