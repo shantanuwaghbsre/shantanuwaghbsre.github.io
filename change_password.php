@@ -4,7 +4,7 @@ session_start();
 if(isset($_SESSION['user_id']) && $_SESSION['user_role'] == 'user') {
 include 'header.php'; ?>
 <div id="user_profile-content">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-md-offset-3 col-md-6">
                 <?php
@@ -17,7 +17,7 @@ include 'header.php'; ?>
                     if (count($result) > 0) {
                         ?>
 
-                        <div class="signup_form">
+                        <div class="@signup_form" style="padding:30px; background-color:#f9f9f9;">
                             <h2>Change Password</h2>
                             <!-- Form -->
                             <form id="modify-password" method="POST">
@@ -37,7 +37,7 @@ include 'header.php'; ?>
                                         <input type="password" name="new_pass" class="form-control new_pass"
                                                placeholder="Enter Old Password" requried/>
                                     </div>
-                                    <input type="submit" name="submit" class="btn" value="Submit"/>
+                                    <input type="submit" name="submit" class="btn btn-primary" value="Submit"/><br><br>
                                 <?php } ?>
                             </form>
                             <!-- /Form -->

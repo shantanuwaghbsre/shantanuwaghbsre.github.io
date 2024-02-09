@@ -6,7 +6,7 @@ $res = $db->getResult();
 $db->select('products','*',null,"product_id= '{$p_id}'",null,null);
 $single_product = $db->getResult();
 if(count($single_product) > 0){ 
-    $title = $single_product[0]['product_title'];   //set dynamic header
+   $title = $single_product[0]['product_title'];   //set dynamic header
     // include header
     include 'header.php'; ?>
 <div class="single-product-container">
@@ -39,14 +39,15 @@ if(count($single_product) > 0){
                         <h3 class="title"><?php echo $row['product_title']; ?></h3>
                         <span class="price"><?php echo $cur_format; ?>  <?php echo $row['product_price']; ?></span>
                         <p class="description"><?php echo html_entity_decode($row['product_desc']); ?></p>
-                        <a class="add-to-cart" data-id="<?php echo $row['product_id']; ?>" href="">Add to cart</a>
-                        <a class="add-to-wishlist" data-id="<?php echo $row['product_id']; ?>" href="">Add to Wislist</a>
+                        <a class="add-to-cart" data-id="<?php echo $row['product_id']; ?>" href="" onclick="addtoCart('<?php echo $title; ?>')">Add to cart</a>
+                        <a class="add-to-wishlist" data-id="<?php echo $row['product_id']; ?>" href="" onclick="addtoWishlist('<?php echo $title; ?>')">Add to Wislist</a>
                     </div>
                 </div>
                 <div class="col-md-2"></div>
     <?php   } ?>
         </div>
-    </div>
+    </div><br><br><br>
+    <?php include 'review.php'; ?>
 </div>
 <?php include 'footer.php'; 
 }else{
@@ -54,3 +55,14 @@ if(count($single_product) > 0){
 
 }
 ?>
+
+<script type="text/javascript">
+    function addtoCart(title)
+    {
+        alert(title +"\nProduct Successfully Added to Cart");
+    }
+    function addtoWishlist(title)
+    {
+        alert(title+"\nProduct Successfully Added to Wishlist");
+    }
+</script>

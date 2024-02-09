@@ -1,3 +1,10 @@
+<?php 
+include 'config.php';
+$db = new Database(); 
+include 'header.php'; 
+?>
+<br><br>
+<h1 style="margin-left:45px; margin-bottom:2%;">Drop your Review</h1>
 <div class="w3-container">
     <!-- Form for submitting reviews -->
     <form id="reviewForm" class="w3-container w3-margin-bottom" method="POST" action="review_submit.php">

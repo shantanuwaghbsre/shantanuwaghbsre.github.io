@@ -7,13 +7,13 @@ if(isset($_SESSION['user_id']) && $_SESSION['user_role'] == 'user') {
 }else{
 
 include 'header.php'; ?>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-offset-auto col-md-6" style="background-color:#f9f9f9; width:100%;">
+        <div class="col-md-offset-auto col-md-6" style="background-color:#ffffff; width:100%; padding:30px;">
            
             <!-- Form -->
-            <form id="register_sign_up" class="signup_form" method ="POST" autocomplete="off">
-                <h2>register here</h2>
+            <form id="register_sign_up" method ="POST" autocomplete="off">
+                <h2>Create an Account</h2>
                 <div class="form-group">
                     <label>First Name</label>
                     <input type="text" name="f_name" class="form-control first_name" placeholder="First Name" requried />

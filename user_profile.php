@@ -18,7 +18,7 @@ include 'header.php'; ?>
                         if (count($result) > 0) {
                             $table = '<table>';
                             foreach($result as $row) { ?>
-                                <table class="table table-bordered table-responsive">
+                                <table class="table table-bordered table-responsive" id="userProfile_table">
                                     <tr>
                                         <td><b>First Name :</b></td>
                                         <td><?php echo $row["f_name"]; ?></td>
