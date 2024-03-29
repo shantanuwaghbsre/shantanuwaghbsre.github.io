@@ -4,11 +4,17 @@ include 'header.php'; ?>
         <h2 class="admin-heading">All Products</h2>
         <a class="add-new pull-right" href="add_product.php">Add New</a>
         <?php
+         // Define limit for pagination
         $limit = 10;
+            // Initialize Database object
         $db = new Database();
+         // Select product details along with category, subcategory, and brand information
         $db->select('products','products.product_id,products.product_code,products.product_cat,products.product_sub_cat,products.product_brand,product_title,products.product_price,products.qty,products.product_status,products.featured_image,sub_categories.sub_cat_title,brands.brand_title','sub_categories ON products.product_sub_cat=sub_categories.sub_cat_id LEFT JOIN brands ON products.product_brand=brands.brand_id',null,'products.product_id DESC',$limit);
+         // Get the result of the query
         $result = $db->getResult();
+         // Check if there are any products
         if (count($result) > 0) { ?>
+            // Display products in a table
             <table id="productsTable" class="table table-striped table-hover table-bordered">
                 <thead>
                     <th>#</th>
@@ -37,7 +43,7 @@ include 'header.php'; ?>
                                 <img src="images/index.png" alt="" width="50px"/>
                             <?php } ?>
                         </td>
-                        <td><?php
+                        <td><?php  // Display product status
                                 if($row['product_status'] == '1'){
                                     echo '<span class="label label-success">Active</span>';
                                 }else{
@@ -45,7 +51,7 @@ include 'header.php'; ?>
                                 }
                             ?>
                         </td>
-                        <td>
+                        <!-- <td> Link to edit product and delete product -->
                             <a href="edit_product.php?id=<?php echo $row['product_id'];  ?>"><i class="fa fa-edit"></i></a>
                             <a class="delete_product" href="javascript:void()" data-id="<?php echo $row['product_id'] ?>" data-subcat="<?php echo $row['product_sub_cat'] ?>"><i class="fa fa-trash"></i></a>
                         </td>
@@ -54,8 +60,10 @@ include 'header.php'; ?>
                 </tbody>
             </table>
         <?php }else{ ?>
+             // Display message if no products found
             <div class="not-found clearfix">!!! No Products Found !!!</div>
         <?php    } ?>
+         <!-- Pagination section -->
         <div class="pagination-outer">
         <?php   //show pagination
         echo $db->pagination('products','sub_categories ON products.product_sub_cat=sub_categories.sub_cat_id LEFT JOIN brands ON products.product_brand=brands.brand_id',null,$limit);

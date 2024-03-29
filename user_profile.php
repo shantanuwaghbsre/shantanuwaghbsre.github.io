@@ -1,23 +1,29 @@
 <?php
+// Including configuration file and starting session
 include 'config.php';
 session_start();
+// Redirecting to homepage if user is not logged in or is not a regular user
 if(!isset($_SESSION['user_id']) && $_SESSION['user_role'] != 'user') {
     header("Location: " . $hostname);
 }
+// Including header file
 include 'header.php'; ?>
+<!-- User profile content -->
     <div id="user_profile-content">
         <div class="container">
             <div class="row">
                 <div class="col-md-offset-3 col-md-6">
                     <h2 class="section-head">My Profile</h2>
                     <?php
-                        $user_id = $_SESSION["user_id"];
-                        $db = new Database();
-                        $db->select('user','*',null,"user_id = '{$user_id}'",null,null);
-                        $result = $db->getResult();
+                    // Retrieving user details from the database
+                        $user_id = $_SESSION["user_id"]; // Getting the user ID from the session
+                        $db = new Database(); // Creating a new instance of the Database class
+                        $db->select('user','*',null,"user_id = '{$user_id}'",null,null); // Selecting user details from the database based on the user ID
+                        $result = $db->getResult(); // Getting the result of the database query
                         if (count($result) > 0) {
-                            $table = '<table>';
-                            foreach($result as $row) { ?>
+                            // Checking if there are any user details retrieved
+                            $table = '<table>'; // Initializing a table HTML structure
+                            foreach($result as $row) { // Iterating through each row of the user details ?>
                                 <table class="table table-bordered table-responsive" id="userProfile_table">
                                     <tr>
                                         <td><b>First Name :</b></td>
@@ -47,6 +53,7 @@ include 'header.php'; ?>
                             <?php }
                         }
                         ?>
+                        <!-- This line creates a link to the "edit_user.php" page with the user ID appended as a query parameter, allowing the user to modify their details. -->
                         <a class="modify-btn btn" href="edit_user.php?user=<?php echo $_SESSION['user_id']; ?>">Modify Details</a>
                         <a class="modify-btn btn" href="change_password.php">Change Password</a>
                 </div>

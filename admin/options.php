@@ -1,16 +1,22 @@
 <?php
 // include header file
-include 'header.php'; ?>
+include 'header.php'; 
+// Start admin-content-container
+?>
 <div class="admin-content-container">
+    <!--Heading for Options-->
     <h2 class="admin-heading">Options</h2>
     <?php
+      // Initialize Database object
     $db = new Database();
+     // Select all options from the database
     $db->select('options','*',null,null,null,null);
     $result = $db->getResult();
     if ($result > 0) {
         foreach($result as $row) { ?>
             <form id="updateOptions" class="add-post-form row" method="post" enctype="multipart/form-data">
                 <div class="col-md-6">
+                     <!-- Form fields for site name, title, description, contact email, and phone number -->
                     <div class="form-group">
                         <label for="">Site Name</label>
                         <input type="text" class="form-control site_name" name="site_name"

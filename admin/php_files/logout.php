@@ -1,4 +1,6 @@
 <?php
+
+     // Include the configuration file
     include 'config.php';
     /* Start the session */
     session_start();
@@ -7,6 +9,6 @@
     /* destroy the session */
     session_destroy();
 
-// mysqli_close($conn);
+// Redirect to the index.php page
 header("location:{$base_url}admin/index.php");
 ?>

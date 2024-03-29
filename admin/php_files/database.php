@@ -11,13 +11,17 @@ class Database{
 		private $mysqli = ""; // This will be our mysqli object
 		private $myQuery = "";// used for debugging process with SQL return
 
-		private $conn = false;
+		private $conn = false; // Flag indicating whether a database connection is established.
 
 		public function __construct(){
 
 			if(!$this->conn){
 
 				$this->mysqli = new mysqli($this->db_host,$this->db_user,$this->db_pass,$this->db_name);
+				// The host name of the MySQL server.
+				// The MySQL user name.
+				// The MySQL password.
+				// The name of the database to connect to.
 
 				// Check connection
 				if ($this->mysqli->connect_errno > 0) {
@@ -37,10 +41,13 @@ class Database{
     	 if($this->tableExists($table)){
 
     	 	$table_columns = implode(', ',array_keys($params));
+    	 	// Separator for the implode function.
     	 	$table_value =implode("', '", $params);
+    	 	// Array containing the keys (column names) to implode.
     	 	// echo $arr_value; exit;
 
 				$sql="INSERT INTO $table ($table_columns) VALUES ('$table_value')";
+				// Constructing the SQL query for inserting data into the specified table
 
     	 	$this->myQuery = $sql; // Pass back the SQL
           // Make the query to insert to the database
@@ -174,11 +181,15 @@ class Database{
         $query = $this->mysqli->query($sql);
         
         $total_record = $query->fetch_array();
+        // Fetching the result of the query as an associative array
         $total_record = $total_record[0];
+        // Accessing the first element of the array, which contains the total number of records
  
         $total_page = ceil( $total_record / $limit);
+        // Calculate the total number of pages needed based on the total number of records and the limit per page
 
         $url = basename($_SERVER['PHP_SELF']);
+        // Extract the filename of the currently executing script from the server-supplied $_SERVER['PHP_SELF'] variable
 
 	        if(isset($_GET["page"])){
 			    	$page = $_GET["page"];
@@ -221,18 +232,23 @@ class Database{
 
 		if($query){
       $sql_array = explode(' ',$sql);
+      // Split the SQL query into an array of individual words using space (' ') as the delimiter
       switch ($sql_array[0]) {
         case "INSERT":
           array_push($this->result,$this->mysqli->insert_id);
+          // Add the ID of the last inserted row to the result array
           break;
         case "UPDATE":
           array_push($this->result,$this->mysqli->affected_rows);
+          // Add the number of affected rows by the last database operation to the result array
           break;
         case "DELETE":
           array_push($this->result,$this->mysqli->affected_rows);
+          // Add the number of affected rows by the last database operation to the result array
           break;
         case "SELECT":
           array_push($this->result,$query->fetch_all(MYSQLI_ASSOC));
+          // Fetch all rows from the result set as an associative array and add them to the result array
           break;
       }
 			// $this->result = $query->fetch_all(MYSQLI_ASSOC);
@@ -246,6 +262,7 @@ class Database{
 	// Private function to check if table exists for use with queries
 	private function tableExists($table){
 		$tablesInDb = $this->mysqli->query("SHOW TABLES FROM  $this->db_name LIKE '$table'");
+		// Selects all rows from the table where the db_name field is similar to the value stored in $table
         if($tablesInDb){
         	if($tablesInDb->num_rows == 1){
                 return true; // The table exists
@@ -273,9 +290,13 @@ class Database{
     // Escape your string
     public function escapeString($data){
       $data = trim($data);
+      // Trim leading and trailing whitespace from the string
       $data = stripslashes($data);
+       // Unquotes a quoted string
       $data = htmlspecialchars($data);
+       // Convert special characters to HTML entities
       return $this->mysqli->real_escape_string($data);
+       // Escapes special characters in a string for use in an SQL statement
     }
 
     // close connection

@@ -1,12 +1,13 @@
 <?php
-include 'config.php';
-session_start();
+include 'config.php';  // Include the configuration file
+session_start(); // Start the session
 if(isset($_SESSION['user_id']) && $_SESSION['user_role'] == 'user') {
+    // Check if the user is logged in and their role is 'user'
     include 'config.php';
-    header("Location: " . $hostname."/user_profile.php");
+    header("Location: " . $hostname."/user_profile.php"); // Redirect the user to the user profile page
 }else{
 
-include 'header.php'; ?>
+include 'header.php'; // Include the header file ?>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-offset-auto col-md-6" style="background-color:#ffffff; width:100%; padding:30px;">

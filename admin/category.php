@@ -4,9 +4,13 @@ include 'header.php'; ?>
     <h2 class="admin-heading">All Categories</h2>
     <a class="add-new pull-right" href="add_category.php">Add New</a>
     <?php
+       // Set limit for pagination
     $limit = 10;
+        // Create a new Database object
     $db = new Database();
+    // Select all categories
     $db->select('categories','*',null,null,'categories.cat_id DESC',$limit);
+        // Get the result
     $result = $db->getResult();
     if (count($result) > 0) { ?>
         <table class="table table-striped table-hover table-bordered">
@@ -26,7 +30,7 @@ include 'header.php'; ?>
             <?php } ?>
             </tbody>
         </table>
-    <?php }else{ ?>
+    <?php }else{ ?>    <!-- No Categories Available -->
         <div class="not-found">!!! No Category Available !!!</div>
     <?php    }  ?>
     <div class="pagination-outer">

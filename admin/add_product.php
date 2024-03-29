@@ -1,14 +1,20 @@
 <?php
 // include header file
 include 'header.php'; ?>
+<!-- Admin content container -->
     <div class="admin-content-container">
+            <!-- Admin heading -->
         <h2 class="admin-heading">Add New Product</h2>
+         <!-- Product creation form -->
         <form id="createProduct" class="add-post-form row" method="post" enctype="multipart/form-data">
+             <!-- Left column -->
             <div class="col-md-9">
+                 <!-- Product title input -->
                 <div class="form-group">
                     <label for="">Product Title</label>
                     <input type="text" class="form-control product_title" name="product_title" placeholder="Product Title" requried/>
                 </div>
+                  <!-- Product category selection -->
                 <div class="form-group category">
                     <label for="">Product Category</label>
                     <?php
@@ -16,6 +22,7 @@ include 'header.php'; ?>
                     $db->select('categories','*',null,null,'categories.cat_id DESC',null);
                     // $sql = "SELECT * FROM categories ORDER BY categories.cat_id DESC";
                     $categories = $db->getResult();?>
+                      <!-- Fetch and display categories -->
                     <select class="form-control product_category" name="product_cat">
                         <option value="" selected disabled>Select Category</option>
                         <?php if ($categories > 0) {  

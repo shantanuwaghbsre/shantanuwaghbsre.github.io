@@ -1,11 +1,15 @@
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script type="text/javascript">
+    console.log("reached here");
+        $(document).ready(function(){
+  // Fade in effect on page load
+  $('#content').fadeIn(1500); // Adjust the duration as needed
+});
+    </script>
 <div id ="footer">
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <?php
-                    $db = new Database();
-                    $db->select('options','site_name,footer_text,site_desc,contact_phone,contact_email,contact_address',null,null,null,null);
-                    $footer = $db->getResult();  ?>
                 <!-- <h3><?php echo $footer[0]['site_name']; ?></h3>
                 <p><?php echo $footer[0]['site_desc']; ?></p> -->
                 <h3>Rishigyan.</h3>
@@ -68,23 +72,25 @@
 <script type="text/javascript" src="js/owl.carousel.js"></script>
 
 <script>
+    // Document ready function to ensure the DOM is fully loaded before executing the code
     $(document).ready(function(){
-
+ // Initialize the okzoom plugin for image zooming
         $('#product-img').okzoom({
-            width: 200,
-            height: 200,
-            scaleWidth: 800
+            width: 200, // Set the initial width of the zoomed image
+            height: 200, // Set the initial height of the zoomed image
+            scaleWidth: 800 // Set the maximum width of the zoomed image
         });
-
+ // Initialize Owl Carousel for the banner carousel
         $('.banner-carousel').owlCarousel({
-            loop: true,
-            margin: 0,
-            responsiveClass: true,
-            navText : ["",""],
-            responsive: {
+            loop: true, // Enable infinite loop
+            margin: 0, // Set the margin between items
+            responsiveClass: true, // Enable responsive design
+            navText : ["",""], // Set navigation text to empty strings (no text)
+            responsive: {             // Responsive breakpoints and configurations for different screen sizes
+
                 0: {
-                    items: 1,
-                    nav: true
+                    items: 1, // Number of items to display at screen width 0px and above
+                    nav: true // Enable navigation arrows
 
                 },
                 600: {
@@ -94,12 +100,12 @@
                 1000: {
                     items: 1,
                     nav: true,
-                    loop: false,
-                    margin: 10
+                    loop: false, // Disable loop at screen width 1000px and above
+                    margin: 10 // Set margin between items
                 }
             }
         });
-
+         // Initialize Owl Carousel for the popular products carousel
         $('.popular-carousel').owlCarousel({
             loop: true,
             margin: 0,
@@ -127,7 +133,7 @@
                 }
             }
         });
-
+ // Initialize Owl Carousel for the latest products carousel
         $('.latest-carousel').owlCarousel({
             loop: true,
             margin: 0,

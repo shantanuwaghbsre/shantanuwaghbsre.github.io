@@ -1,7 +1,8 @@
-<?php
-  include 'admin/php_files/database.php';
+  <?php
+    include 'admin/php_files/database.php'; // Including the database connection file
 
-  // $hostname = "http://localhost/shoppingproject-yb";
-  $hostname = "http://localhost/shopping-project";
-    
-?>
+    // Setting the base URL for the website
+    // $hostname = "http://localhost/shoppingproject-yb";
+    $hostname = "http://localhost/shopping-project";
+      
+  ?>
