@@ -1,14 +1,16 @@
 <?php
-include 'config.php';
-session_start();
+include 'config.php'; // Including configuration file
+session_start(); // Starting session
+// Checking if user is logged in and has user role
 if(isset($_SESSION['user_id']) && $_SESSION['user_role'] == 'user') {
-include 'header.php'; ?>
+include 'header.php'; // Including header file ?>
 <div id="user_profile-content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-offset-3 col-md-6">
                 <?php
                 //if(isset($_GET['user'])) {
+                // Retrieving user information
                     $user = $_SESSION['user_id'];
                     $db = new Database();
 
@@ -19,6 +21,7 @@ include 'header.php'; ?>
 
                         <div class="@signup_form" style="padding:30px; background-color:#f9f9f9;">
                             <h2>Change Password</h2>
+                              <!-- Form for changing password -->
                             <!-- Form -->
                             <form id="modify-password" method="POST">
                                 <?php foreach($result as $row) { ?>

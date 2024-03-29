@@ -1,18 +1,25 @@
 <?php
+// Include the configuration file and start the session
 include 'config.php';
 session_start();
+// Check if the user is logged in and has the role of 'user'
 if(isset($_SESSION['user_id']) && $_SESSION['user_role'] == 'user') {
+ // Include the header
 include 'header.php'; ?>
 <div id="user_profile-content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-offset-3 col-md-6">
                 <?php
+                // Get the user ID from the URL parameter
                 $user = $_GET['user'];
                 $db = new Database();
+                // Select user data from the database based on the user ID
                 $db->select('user','*',null,"user_id= '{$user}'",null,null);
                 $result = $db->getResult();
+                 // Check if user data exists
                 if(count($result) > 0) { ?>
+                    <!-- Modify Profile Form -->
                     <!-- Form -->
                     <form id="modify-user" method="POST">
                         <div class="@signup_form" style="background-color:#f9f9f9; padding:30px;">
@@ -49,6 +56,7 @@ include 'header.php'; ?>
                                 <input type="text" name="city" class="form-control city" placeholder="City" value="<?php echo $row['city']; ?>" requried>
                             </div>
                             <input type="submit" name="signup" class="btn btn-primary" value="Modify"/>
+                              <!-- /Modify Profile Form -->
                         <?php  } ?>
                         </div>
                     </form>

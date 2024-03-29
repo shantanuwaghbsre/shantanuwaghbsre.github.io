@@ -7,10 +7,13 @@
                 <div class="col-md-12">
                     <h2 class="section-head">Latest Products</h2>
                     <?php
+                     // Limiting the number of products displayed
                     $limit = 8;
                     $db = new Database();
+                    // Selecting latest products from the database
                     $db->select('products','*',null,'product_status = 1 AND qty > 0','product_id DESC',$limit);
                     $result = $db->getResult();
+                    // Checking if there are any products to display
                     if(count($result) > 0){
                         foreach($result as $row){ ?>
                             <div class="col-md-3 col-sm-6">
@@ -29,7 +32,7 @@
                                         <h3 class="title">
                                             <a href="single_product.php?pid=<?php echo $row['product_id']; ?>"><?php echo $row['product_title']; ?></a>
                                         </h3>
-                                        <div class="price"><?php echo $cur_format; ?> <?php echo $row['product_price']; ?></div>
+                                        <div class="price"><?php echo $row['product_price']; ?></div>
                                     </div>
                                 </div>
                             </div>

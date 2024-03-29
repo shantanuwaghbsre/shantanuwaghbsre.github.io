@@ -1,17 +1,10 @@
+                         <?php
+                            $db = new Database();
+                            ?>
                         <!-- Footer Start-->
                         <div id="admin-footer">
-                            <?php
-                            $db = new Database();
-                            $db->select('options','footer_text',null,null,null,null);
-                            $result = $db->getResult();
+                            © 2024 Bapa Sitaram Healthcare and Ayurveda Pvt. Ltd. All rights reserved. Unauthorized use or reproduction of content is prohibited.
 
-                            if(count($result) > 0){ ?>
-                                <span><?php echo $result[0]['footer_text']; ?></span>
-                            <?php }else{ ?>
-                                <span>Created By</span>
-                            <?php }
-                            ?>
-                            
                         </div>
                         <!-- Footer End-->
                     </div>

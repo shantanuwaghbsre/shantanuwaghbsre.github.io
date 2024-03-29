@@ -1,15 +1,23 @@
 <?php
 // include header file
 include 'header.php'; ?>
+        <!-- Start admin-content-container -->
         <div class="admin-content-container">
+            <!-- Heading for All Orders -->
             <h2 class="admin-heading">All Orders</h2>
             <?php
+            // Limit for pagination
             $limit = 5;
+               // Initialize Database object
             $db = new Database();
+            // SQL query to fetch order details including product, user, and payment information
             $db->sql('SELECT order_products.product_id,order_products.order_id,order_products.total_amount,order_products.product_qty,order_products.delivery,order_products.product_user,order_products.order_date,products.featured_image,user.f_name,user.address,user.city,payments.payment_status FROM order_products LEFT JOIN products ON FIND_IN_SET(products.product_id,order_products.product_id) > 0
                      LEFT JOIN user ON order_products.product_user=user.user_id LEFT JOIN payments ON payments.txn_id = order_products.pay_req_id GROUP BY order_products.order_id ORDER BY order_products.order_id DESC');
+               // Get the result of the query
                 $result = $db->getResult();
+                // Check if there are any orders
                 if(count($result) > 0) {  ?>
+                    <!-- Display orders in a table -->
                         <table class="table table-striped table-hover table-bordered">
                             <thead>
                             <th>ORDER No.</th>
@@ -30,6 +38,7 @@ include 'header.php'; ?>
                                     <td><?php echo 'ODR00'.$row[$i]['order_id']; ?></td>
                                     <td>
                                     <?php
+                                    // Extract product code and quantity
                                     $product_code = array_filter(explode(',',$row[$i]['product_id']));
                                     $product_qty = array_filter(explode(',',$row[$i]['product_qty']));
                                        for($p=0;$p<count($product_code);$p++){ ?>
@@ -49,12 +58,14 @@ include 'header.php'; ?>
                                     <td><?php echo date('d M, Y',strtotime($row[$i]['order_date'])); ?></td>
                                     <td>
                                         <?php
+                                        // Display payment status
                                             if($row[$i]['payment_status'] == 'credit'){ ?>
                                                 <span class="label label-success">Paid</span>
                                         <?php }?>
                                     </td>
                                     <td>
                                         <?php
+                                         // Display delivery status
                                             if($row[$i]['delivery'] == '1'){ ?>
                                                 <span>Delivered</span>
                                         <?php }else{ ?>
@@ -67,7 +78,7 @@ include 'header.php'; ?>
                             </tbody>
                         </table>
                     <?php
-                }else { ?>
+                }else { ?> // Display message if no orders found
                         <div class="not-found">!!! No Orders Found !!!</div>
                 <?php } ?>
                 <div class="pagination-outer">

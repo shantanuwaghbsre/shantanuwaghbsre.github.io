@@ -1,8 +1,6 @@
 <?php include 'config.php';  //include config
 // set dynamic title
 $db = new Database();
-$db->select('options','site_title',null,null,null,null);
-$result = $db->getResult();
 
 // include header 
 include 'header.php'; ?>
@@ -96,17 +94,18 @@ include 'header.php'; ?>
   $password = "";
   $dbname = "shopping_db";
 
+  // Establishing the database connection
   $con = mysqli_connect($servername,$username,$password,$dbname);
 
-  if (isset($_POST['save_btn'])) {
+  if (isset($_POST['save_btn'])) {  // Checking if the form is submitted
   	$firstname = $_POST['firstname'];
   	$lastname = $_POST['lastname'];
   	$email = $_POST['email'];
   	$message = $_POST['message'];
-
+// Inserting data into the 'contact' table
   	$insert = "INSERT INTO contact(firstname,lastname,email,message) VALUES('$firstname','$lastname','$email','$message')";
   	$query = mysqli_query($con,$insert);
-  	if ($query) {
+  	if ($query) {// Checking if the query executed successfully
   		?>
 
   		<script type="text/javascript">

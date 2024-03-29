@@ -5,11 +5,17 @@ include 'header.php'; ?>
     <h2 class="admin-heading">All Brands</h2>
     <a class="add-new pull-right" href="add_brand.php">Add New</a>
     <?php
+     // Set limit for pagination
     $limit = 10;
+       // Create a new Database object
     $db = new Database();
+       // Select brands along with their categories
     $db->select('brands','brands.brand_id,brands.brand_title,brands.brand_cat,categories.cat_title','categories ON brands.brand_cat=categories.cat_id',null,'brands.brand_id DESC',$limit);
+    // Get the result
     $result = $db->getResult();
+      // Check if there are brands
     if (count($result) > 0) { ?>
+         <!-- Brands Table -->
         <table class="table table-striped table-hover table-bordered">
             <thead>
             <th>Title</th>
@@ -29,9 +35,9 @@ include 'header.php'; ?>
             <?php } ?>
             </tbody>
         </table>
-    <?php }else{ ?>
+    <?php }else{ ?> <!-- No Brands Found -->
         <div class="not-found">!!! No Barnds Found !!!</div>
-    <?php    } ?>
+    <?php    } ?>    <!-- Pagination -->
     <div class="pagination-outer">
         <?php echo $db->pagination('brands','categories ON brands.brand_cat=categories.cat_id',null,$limit); ?>
     </div>

@@ -1,14 +1,17 @@
 <?php
     include 'php_files/config.php';
+    // Start session if not already started
     if(!session_id()){ session_start(); }
+    // Redirect to admin login if admin_name session variable is not set
     if(!isset($_SESSION['admin_name'])) {
         header("location:{$base_url}/admin");
     }
-
+    // Create a new instance of the Database class
     $db = new Database();
+    // Select site_name, site_logo, and currency_format options from the database
     $db->select('options','site_name,site_logo,currency_format');
     $result = $db->getResult();
-    $currency_format = $result[0]['currency_format'];
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,10 +39,10 @@
                 <div class="row">
                     <div class="col-md-2">
                         <?php
-                        if(!empty($result[0]['site_logo'])){ ?>
-                            <a href="dashboard.php" class="logo-img"><!-- <img src="../images/<?php echo $result[0]['site_logo']; ?>" alt=""> --><img src="images/h.png" style="width:100px; margin-left:20px;"></a>
+                        if(empty($result[0][''])){ ?>
+                            <img src="images/h.png" style="width:100px; margin-left:20px;"></a>
                         <?php }else{ ?>
-                            <a href="dashboard.php" class="logo"><?php echo $result[0]['site_name']; ?></a>
+                            <a href="dashboard.php" class="logo"></a>
                         <?php } ?>
                     </div>
                     <div class="col-md-offset-8 col-md-2">
