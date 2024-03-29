@@ -49,7 +49,7 @@ include 'header.php'; ?>
 
                                     </td>
                                     <td><?php echo array_sum($product_qty); ?></td>
-                                    <td><?php echo $currency_format.' '.$row[$i]['total_amount']; ?></td>
+                                  
                                     <td>
                                         <b>Name : </b><?php echo $row[$i]['f_name']; ?><br>
                                         <b>Address : </b><?php echo $row[$i]['address']; ?><br>

@@ -5,6 +5,7 @@ $(document).ready(function(){
     var path = window.location.pathname.split( '/' );
     // Combine the origin and the first path segment to construct the base URL
     var URL = origin+'/'+path[1]+'/';
+
     
     // check user login
     // =======================
@@ -36,7 +37,8 @@ $(document).ready(function(){
                            // If 'success' property exists, show success message
                         $('#adminLogin').append('<div class="alert alert-success">Logged In Successfully.</div>');
                          // Redirect to the dashboard after a delay
-                        setTimeout(function(){ window.location = URL+'admin/dashboard.php'; }, 1000);
+                        setTimeout(function(){ window.location = origin +'/admin/dashboard.php'; }, 1000);
+                        
                     }else if(res.hasOwnProperty('error')){
                         // If 'error' property exists, show error message
                         $('#adminLogin').append('<div class="alert alert-danger">Username and Password not Matched.</div>');
